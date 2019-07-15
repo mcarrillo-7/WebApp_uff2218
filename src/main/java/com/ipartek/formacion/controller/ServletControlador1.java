@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/controlador1")
 public class ServletControlador1 extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
        
     
 

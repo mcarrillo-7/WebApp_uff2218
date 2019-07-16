@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+<%
+	String title = request.getParameter("title");
+	if (title == null) {
+		title = "";
+	} else {
+		title = "|" + title;
+	}
+%>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -13,6 +21,6 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Hello, world!</title>
+<title>Hello WebApp<%=title%></title>
 </head>
 <body>

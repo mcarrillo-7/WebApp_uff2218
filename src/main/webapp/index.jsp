@@ -10,6 +10,7 @@
 		<li class="list-group-item"><a href="ejemplos/basico3.jsp">Ejemplo servlet response content type</a></li>
 		<li class="list-group-item"><a href="ejemplos/basico4.jsp">GET Y POST</a></li>
 		<li class="list-group-item"><a href="nombres">Ejemplo nombres</a></li>
+		<li class="list-group-item"><a href="jstl">Librerias</a></li>
 		<li class="list-group-item">JSP</li>
 		<li class="list-group-item">JSTL - Java Server Tag Libraries</li>
 		<li class="list-group-item">Session</li>

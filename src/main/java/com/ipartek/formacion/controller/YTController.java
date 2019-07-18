@@ -7,46 +7,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.formacion.model.pojo.Youtube;
+import com.ipartek.formacion.model.dao.VideoDAO;
+import com.ipartek.formacion.model.pojo.Video;
 
 /**
  * Servlet implementation class YTController
  */
-@WebServlet("/crearVideo")
+@WebServlet("/YTController")
 public class YTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public YTController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String title = request.getParameter("title");
-		String codigo = request.getParameter("codigo");
-		Youtube youtube = null;
-				
 		
-		try {
-			youtube = new Youtube(title, codigo);
-			request.setAttribute("youtube", youtube);
+		VideoDAO videoDAO = VideoDAO.getInstance(); 
+		request.setAttribute("videos", videoDAO.getAll() );
+		request.getRequestDispatcher("youtube/index.jsp").forward(request, response);
 		
-			//llama a la siguiente pagina a la que va a ir
-			request.getRequestDispatcher("/respuesta2.jsp").forward(request, response);
-			
-		} catch (Exception e) {
-			request.setAttribute("mensaje", "VUELVE A INTRODUCIR LOS DATOS, POR FAVOR!!");
-			request.setAttribute("mensaje", "LONGITOD 2-150 CARACTERES");
-			request.setAttribute("mensaje", "LONGITUD MAXIMA DE 11");
-			request.getRequestDispatcher("saludo/youtube.jsp").forward(request, response);
-		}
 	}
 
 	/**

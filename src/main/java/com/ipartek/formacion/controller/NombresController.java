@@ -57,6 +57,8 @@ public class NombresController extends HttpServlet {
 			for (String nombre : listanombres) {
 				if (nombre.toLowerCase().contains(buscar.toLowerCase())) {
 					listaFiltrada.add(nombre);
+				} else {
+					request.setAttribute("mensaje", "No hay coincidencias");
 				}
 			}
 

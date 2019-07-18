@@ -13,6 +13,9 @@
 			<li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
 					<span class="sr-only">(current)</span>
 			</a></li>
+			<li class="nav-item active"><a class="nav-link" href="crearVideo">Videos
+					<span class="sr-only">(current)</span>
+			</a></li>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search">
@@ -21,4 +24,4 @@
 	</div>
 </nav>
 
-<main class="container text-success">
+<main class="container">

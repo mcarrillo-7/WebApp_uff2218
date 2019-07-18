@@ -28,14 +28,18 @@
 			  		 required
 			  		 class="form-control mb-2 mr-sm-2"  
 			  		 placeholder="nombre a buscar">			  		 
-			  <button type="submit" class="btn btn-primary mb-2">Buscar</button>
-			  
+			  <button type="submit" class="btn btn-primary mb-2">Buscar</button>			  
+			</form>
+			
+			<form action="get action="nombres" class="form-inline">
+				<button type="submit" class="btn btn-primary ml-5">Eliminar filtro</button><i class="fas fa-backspace"></i>
 			</form>
 			
 			<% if ( request.getAttribute("buscar") != null ){ %>
 				<p class="text-muted">Resultados para la busqueda de <b>${buscar}</b></p>
-			<% } %>	
-			
+			<% }  %>	
+				
+				
 			
 			
 			<ul class="list-group">
@@ -59,7 +63,7 @@
 			  		 required
 			  		 class="form-control mb-2 mr-sm-2"  
 			  		 placeholder="Nuevo Nombre">			  		 
-			  <button type="submit" class="btn btn-block btn-primary mb-2">Dar De Alta</button>
+			  <button type="submit" class="btn btn-block btn-primary mb-2">Crear</button>
 			  
 			</form>	
 		</div>	

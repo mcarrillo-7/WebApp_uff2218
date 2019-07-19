@@ -13,7 +13,10 @@
 			<li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
 					<span class="sr-only">(current)</span>
 			</a></li>
-			<li class="nav-item active"><a class="nav-link" href="crearVideo">Videos
+			<li class="nav-item active"><a class="nav-link" href="YTController">Videos
+					<span class="sr-only">(current)</span>
+			</a></li>
+			<li class="nav-item active"><a class="nav-link" href="ejemplos/pagina404.jsp">Prueba 404
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<form class="form-inline my-2 my-lg-0">

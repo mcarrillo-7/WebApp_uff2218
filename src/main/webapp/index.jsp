@@ -12,7 +12,6 @@
 		<li class="list-group-item"><a href="nombres">Ejemplo nombres</a></li>
 		<li class="list-group-item"><a href="jstl">Librerias</a></li>
 		<li class="list-group-item"><a href="ejemplos/el.jsp">EL Expression Language</a></li>
-		<li class="list-group-item"><a href="YTController">Youtube</li>
 		<li class="list-group-item">Session</li>
 		<li class="list-group-item">Cookies</li>
 		<li class="list-group-item">Filtros</li>

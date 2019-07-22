@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-LA CAGASTE WEY
-</body>
-</html>
+<%@page isErrorPage="true" %>
+<%@include file="includes/header.jsp"%>
+<%@include file="includes/navbar.jsp"%>
+    
+	    	
+
+	    	    	
+		<div class="jumbotron mt-4">
+		  <h1 class="display-4">Error 404</h1>
+		  <p class="lead">Lo sentimos pero la página solicitada no existe.</p>		  
+		  <a href="mailto:manu.carrilloortega@gmail.com" class="btn btn-primary btn-lg" href="#" role="button">Mandanos un email por favor</a>
+		</div>	
+    	    	
+<%@include file="includes/footer.jsp"%>

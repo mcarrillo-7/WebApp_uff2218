@@ -19,6 +19,15 @@
 			<li class="nav-item active"><a class="nav-link" href="ejemplos/pagina404.jsp">Prueba 404
 					<span class="sr-only">(current)</span>
 			</a></li>
+			<li class="nav-item active">
+				       	<c:if test="${usuario == null}">
+				        	<a class="nav-link" href="login.jsp">Login</a>
+				        </c:if>
+				        <c:if test="${usuario != null}">
+				        	<span>${usuario}<i class="far fa-user-circle"></i></span>
+				        	<a class="nav-link" href="logout">Logout</a>
+				        </c:if>		       
+			</li>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search">

@@ -6,14 +6,23 @@
 <%@include file="../includes/navbar.jsp"%>
 <body class="bg-light">
 	<h1>Listado de videos:</h1>
-
+	
+	
+	<c:if test="${mensaje != null}">
+		<div class="alert alert-${mensaje.tipo} alert-dismissible fade show" role="alert">
+		  <p>${mensaje.texto}</p>
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+	</c:if>	
+	
+	<a href="YTController?op=<%=YTController.OP_NUEVO%>" class="mb-3 btn btn-outline-success">Nuevo Video</a>
 	<ul class="list-group">
 		<c:forEach items="${videos}" var="video">
 			<li class="list-group-item">
-			<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${video.getCodigo()}?rel=0" allowfullscreen></iframe></li>
-			<li class="list-group-item"><a href="YTController?op=<%=YTController.OP_DETALLE%>&id=${video.id}">${video.getNombre()}</a></li>
-			
-			
+			<iframe class="embed-responsive-item-4by3" src="https://www.youtube.com/embed/${video.getCodigo()}?rel=0" allowfullscreen></iframe></li>
+			<li class="list-group-item"><a href="YTController?op=<%=YTController.OP_DETALLE%>&id=${video.id}">${video.getNombre()}</a></li>		
 		</c:forEach>
 	</ul>
 

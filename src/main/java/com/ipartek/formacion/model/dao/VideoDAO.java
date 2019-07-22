@@ -51,8 +51,8 @@ public class VideoDAO {
 	}
 
 	
-	public Video getById(int id) {
-		Video video = new Video();
+	public ArrayList<Video> getById(int id) {
+		ArrayList<Video> lista = new ArrayList<Video>();
 		String sql = "SELECT id, nombre, codigo  FROM video WHERE id = ? ;";
 
 		try (Connection con = ConnectionManager.getConnection(); 
@@ -69,13 +69,13 @@ public class VideoDAO {
 					v.setNombre( rs.getString("nombre"));
 					v.setCodigo( rs.getString("codigo"));
 					*/
-					video = mapper(rs);					
+					lista.add( mapper(rs) );			
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return video;
+		return lista;
 	}
 	/*
 	public ArrayList<Rol> getByName(String search) {
@@ -107,41 +107,38 @@ public class VideoDAO {
 		}
 		return resultado;
 	}
-	private boolean modificar(Rol pojo) throws MysqlDataTruncation, MySQLIntegrityConstraintViolationException {
+	*/
+	public boolean modificar(Video pojo) throws Exception {
 		boolean resultado = false;
-		String sql = "UPDATE `nidea`.`rol` SET `nombre`= ? WHERE  `id`= ?;";
-		try (Connection con = ConnectionManager.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
-			pst.setString(1, pojo.getNombre());
-			pst.setInt(2, pojo.getId());
-			resultado = doSave(pst, pojo);
-		} catch (MySQLIntegrityConstraintViolationException e) {
-			System.out.println("Rol duplicado");
-			throw e;
-		} catch (MysqlDataTruncation e) {
-			System.out.println("Nombre muy largo");
-			throw e;
+		String sql = "UPDATE video SET nombre = ?, codigo = ? WHERE  id = ?;";
+		try (Connection con = ConnectionManager.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql)) {
+				pst.setString(1, pojo.getNombre());
+				pst.setString(2, pojo.getCodigo());
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return resultado;
 	}
-	private boolean crear(Rol pojo) throws MySQLIntegrityConstraintViolationException, MysqlDataTruncation {
+	
+	public boolean crear(Video pojo) throws Exception {
 		boolean resultado = false;
-		String sql = "INSERT INTO `nidea`.`rol` (`nombre`) VALUES (?);";
-		try (Connection con = ConnectionManager.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
+		String sql = "INSERT INTO video (nombre, codigo) VALUES (?, ?);";
+		
+		try (Connection con = ConnectionManager.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql)) {
 			pst.setString(1, pojo.getNombre());
-			resultado = doSave(pst, pojo);
-		} catch (MySQLIntegrityConstraintViolationException e) {
-			System.out.println("Rol duplicado");
-			throw e;
-		} catch (MysqlDataTruncation e) {
-			System.out.println("Nombre muy largo");
-			throw e;
+			pst.setString(2, pojo.getCodigo());
+			int affectedRows = pst.executeUpdate();
+			if(affectedRows == 1) {
+				resultado = true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 		return resultado;
-	}
+	}/*
 	private boolean doSave(PreparedStatement pst, Rol pojo)
 			throws MySQLIntegrityConstraintViolationException, MysqlDataTruncation {
 		boolean resultado = false;
@@ -166,12 +163,15 @@ public class VideoDAO {
 		}
 		return resultado;
 	}
-	@Override
+*/
+	
 	public boolean delete(int id) {
 		boolean resultado = false;
-		String sql = "DELETE FROM `rol` WHERE  `id`= ?;";
-		try (Connection con = ConnectionManager.getConnection(); PreparedStatement pst = con.prepareStatement(sql);) {
+		String sql = "DELETE FROM video WHERE id = ?;";
+		try (Connection con = ConnectionManager.getConnection(); 
+				PreparedStatement pst = con.prepareStatement(sql);) {
 			pst.setInt(1, id);
+			
 			int affetedRows = pst.executeUpdate();
 			if (affetedRows == 1) {
 				resultado = true;
@@ -181,14 +181,7 @@ public class VideoDAO {
 		}
 		return resultado;
 	}
-	@Override
-	public Rol mapper(ResultSet rs) throws SQLException {
-		Rol rol = new Rol();
-		rol.setId(rs.getInt("id"));
-		rol.setNombre(rs.getString("nombre"));
-		return rol;
-	}
-*/
+
 	public Video mapper(ResultSet rs) throws SQLException {
 		Video v = new Video();
 		v.setId( rs.getInt("id") );

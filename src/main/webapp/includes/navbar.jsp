@@ -11,21 +11,21 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
-					<span class="sr-only">(current)</span>
+					
 			</a></li>
-			<li class="nav-item active"><a class="nav-link" href="YTController">Videos
-					<span class="sr-only">(current)</span>
+			<li class="nav-item active"><a class="nav-link" href="backoffice/YTController">Videos
+					
 			</a></li>
 			<li class="nav-item active"><a class="nav-link" href="ejemplos/pagina404.jsp">Prueba 404
-					<span class="sr-only">(current)</span>
+					
 			</a></li>
-			<li class="nav-item active">
+			<li class="nav-item active mr-3 ml-3">
 				       	<c:if test="${usuario == null}">
 				        	<a class="nav-link" href="login.jsp">Login</a>
 				        </c:if>
 				        <c:if test="${usuario != null}">
-				        	<span>${usuario}<i class="far fa-user-circle"></i></span>
-				        	<a class="nav-link" href="logout">Logout</a>
+				        	<span><i class="far fa-user-circle"></i>${usuario}</span>
+				        	<a class="nav-link d-block mr-6" href="logout">Logout</a>
 				        </c:if>		       
 			</li>
 			<form class="form-inline my-2 my-lg-0">
@@ -37,3 +37,16 @@
 </nav>
 
 <main class="container">
+  <div class="row">	
+  <div class="col-12">
+	<% if ( request.getAttribute("mensaje") != null ){ %>
+	 	<div class="alert alert-${mensaje.tipo} alert-dismissible fade show" role="alert">
+		  <p>${mensaje.texto}</p>
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+
+		<%} %>
+	</div>	
+	  </div>

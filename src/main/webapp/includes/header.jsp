@@ -15,7 +15,8 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<base href="${pageContext.request.contextPath}/">
-
+<link rel="stylesheet" type="text/css"
+	href="vendors/fontawesome-free-5.9.0-web/css/all.min.css">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

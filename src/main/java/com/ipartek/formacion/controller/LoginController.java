@@ -36,10 +36,19 @@ public class LoginController extends HttpServlet {
 		if("admin".equals(usuario) && "admin".equals(pass)) {
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("usuario", "Segismundo");
+			session.setAttribute("usuario", "usuario" + request.getLocalAddr());
 			request.setAttribute("mensaje", new Alert("success", "Welcome boy!!"));
-			request.getRequestDispatcher("backoffice/index.jsp").forward(request, response);
+			String callback = (String) session.getAttribute("callback");
+			if(callback == null) {
+				request.getRequestDispatcher("backoffice/index.jsp").forward(request, response);
+
+			} else {
+				request.getRequestDispatcher("backoffice/index.jsp").forward(request, response);
+
+			}
 		} else {
+			
+			
 			request.setAttribute("mensaje", new Alert("danger", "Credenciales no correctas"));
 			
 			request.getRequestDispatcher("backoffice/login.jsp").forward(request, response);

@@ -22,17 +22,19 @@ import com.ipartek.formacion.model.pojo.Video;
 /**
  * Servlet implementation class YTController
  */
-@WebServlet("/YTController")
+@WebServlet("/backoffice/YTController")
 public class YTController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String VIEW_INDEX = "youtube/index.jsp";
 	public static final String VIEW_FORM  = "youtube/formulario.jsp";
+	public static final String VIEW_DETALLE  = "youtube/detalle.jsp";
 	public static String view  = VIEW_INDEX;
     public static final String OP_LISTAR="1";
     public static final String OP_DETALLE="13";
     public static final String OP_GUARDAR = "23";
 	public static final String OP_NUEVO = "4";
 	public static final String OP_ELIMINAR = "hfd3";
+	
     
 	private static VideoDAO videoDAO;
 	
@@ -97,7 +99,7 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 			break;
 		}
 		
-		
+		request.getRequestDispatcher(view).forward(request, response);
 
 	}
 
@@ -105,7 +107,7 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 			
 			request.setAttribute("videos", videoDAO.getAll() );
 			view = VIEW_INDEX;
-			request.getRequestDispatcher(view).forward(request, response);
+		
 			
 		}
 		
@@ -114,10 +116,10 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 			String sid = request.getParameter("id");
 			int id = Integer.parseInt(sid);
 			
-			ArrayList<Video> v = videoDAO.getById(id);
+			Video v = videoDAO.getById(id);
 			request.setAttribute("video", v );
-			view = VIEW_FORM;
-			request.getRequestDispatcher(view).forward(request, response);
+			view = VIEW_DETALLE;
+			
 			
 		}
 		
@@ -125,7 +127,7 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 			
 			request.setAttribute("video", new Video() );
 			view = VIEW_FORM;
-			request.getRequestDispatcher(view).forward(request, response);
+			
 		}
 
 		private void eliminar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -169,9 +171,9 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 					} else {
 						videoDAO.modificar(v);
 					}
-					request.setAttribute("mensaje", "Creado");
+					request.setAttribute("mensaje", new Alert("success", "Registro cambiado"));
 				} catch (Exception e) {
-					// TODO: handle exception
+					e.printStackTrace();
 				}
 			}
 			

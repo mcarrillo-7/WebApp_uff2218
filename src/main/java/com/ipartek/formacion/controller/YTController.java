@@ -2,6 +2,7 @@ package com.ipartek.formacion.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import javax.servlet.ServletConfig;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -120,6 +122,13 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 			request.setAttribute("video", v );
 			view = VIEW_DETALLE;
 			
+			HttpSession session = request.getSession();
+			HashMap<Integer,Video> videosVistos = (HashMap<Integer,Video>)session.getAttribute("videosVistos");
+			if ( videosVistos == null ) {
+				videosVistos = new HashMap<Integer,Video>();
+			}		
+			videosVistos.put(v.getId(), v);
+			session.setAttribute("videosVistos", videosVistos);
 			
 		}
 		
@@ -137,7 +146,7 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 			int id = Integer.parseInt(sid);
 
 			if ( videoDAO.delete(id) ) {
-				request.setAttribute("mensaje", new Alert("success","Registro Eliminado"));
+				request.setAttribute("mensaje", new Alert("warning","Registro Eliminado"));
 			}else {
 				request.setAttribute("mensaje", new Alert("danger","ERROR, no se pudo eliminar"));
 			}
@@ -168,14 +177,24 @@ protected void doProcess (HttpServletRequest request, HttpServletResponse respon
 				try {
 					if(v.getId()==-1) { 
 						videoDAO.crear(v);
+						request.setAttribute("mensaje", new Alert("success", "Video creado correctamente"));
 					} else {
 						videoDAO.modificar(v);
 					}
 					request.setAttribute("mensaje", new Alert("success", "Registro cambiado"));
 				} catch (Exception e) {
-					e.printStackTrace();
+					request.setAttribute("mensaje", new Alert("danger", "Problema detectado"));
 				}
-			}
+				
+			}else {
+				String mensaje = "";
+				
+				for (ConstraintViolation<Video> violation : violations) {
+					mensaje += violation.getPropertyPath() +": " + violation.getMessage() +"<br>";
+				}
+				request.setAttribute("mensaje", new Alert("warning", mensaje ));
+				}
+			
 			
 			request.setAttribute("video", v );
 			view = VIEW_FORM;	

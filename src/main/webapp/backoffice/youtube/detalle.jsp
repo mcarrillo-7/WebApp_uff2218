@@ -8,7 +8,9 @@
 
 	<div class="row">
 		<div class="col">
-			<form action="backoffice/YTController" method="post" class="form-group">
+		
+		<%@include file="../../includes/mensaje.jsp"%>
+			<form action="backoffice/YTController" method="post" class="mb-2">
 			<input type="hidden" name="op" value="<%=YTController.OP_GUARDAR%>">
 				<input type="number" name="id" value="${video.id}"
 					placeholder="Escribe un id"><br> <input type="text"
@@ -17,9 +19,9 @@
 					type="text" name="codigo" value="${video.codigo}"
 					placeholder="Escribe el codigo..."><br>
 				<input type="submit" value="${(video.id != -1)?'Modificar':'Crear'}" class="btn btn-outline-info">
+			
+			
 			</form>
-
-
 
 			<c:if test="${video.id != -1}">
 

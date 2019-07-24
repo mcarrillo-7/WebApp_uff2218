@@ -3,28 +3,28 @@
 <%@include file="../../includes/header.jsp"%>
 <%@include file="../../includes/navbar.jsp"%>
 
-	<h1>Detalle Video</h1>
+	<h1>Nuevo Video</h1>
 	
 	<div class="row">
 		<div class="col">
 		
-			
+			<%@include file="../../includes/mensaje.jsp"%>
 			
 			<form action="backoffice/YTController" method="post" class="mb-2">
 			
 				<input type="hidden" name="op" value="<%=YTController.OP_GUARDAR%>">
 			
-				<div class="form-group">	
+			
 					<label for="id">Id:</label>
 					<input type="text" name="id" value="${video.id}" readonly class="form-control">
-				</div>
+		
 				
-				<div class="form-group">
+				
 					<label for="nombre">Nombre:</label>
 					<input type="text" name="nombre" value="${video.nombre}"
 					       placeholder="Mínimio 3 máximo 150"
 					       class="form-control">
-				</div>
+				
 				
 				<div class="form-group">
 					<label for="codigo">Codigo:</label>

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ipartek.formacion.model.pojo.Alert;
+
 /**
  * Servlet Filter implementation class FilterSeguridad
  */
@@ -22,15 +24,10 @@ import javax.servlet.http.HttpSession;
 				DispatcherType.INCLUDE, 
 				DispatcherType.ERROR
 		}
-					, urlPatterns = { "/backoffice" })
+					, urlPatterns = { "/backoffice/*" })
 public class FilterSeguridad implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public FilterSeguridad() {
-        // TODO Auto-generated constructor stub
-    }
+
 
 	/**
 	 * @see Filter#destroy()
@@ -43,18 +40,23 @@ public class FilterSeguridad implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
+
+		
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse res = (HttpServletResponse)response;
 		
 		HttpSession session = req.getSession();
+		
+		
 		session.setAttribute("callback", req.getRequestURI()  );
+		
+		
 		if(session.getAttribute("usuario") != null) {
 			// pass the request along the filter chain
 			chain.doFilter(request, response);			
 		}else {
 			//response redireccionar a login
+			session.setAttribute("mensaje", new Alert("danger", "Por favor, inicia sesion para poder acceder!"));
 			res.sendRedirect(req.getContextPath() + "/login.jsp");
 		}
 		System.out.println("Filtrando");

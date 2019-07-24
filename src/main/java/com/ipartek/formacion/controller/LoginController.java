@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
 		if("admin".equals(usuario) && "admin".equals(pass)) {
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("usuario", "usuario" + request.getLocalAddr());
+			session.setAttribute("usuario", "usuario" + request.getRemoteAddr());
 			request.setAttribute("mensaje", new Alert("success", "Welcome boy!!"));
 			String callback = (String) session.getAttribute("callback");
 			if(callback == null) {

@@ -1,4 +1,5 @@
 
+<%@page import="com.ipartek.formacion.controller.YTController"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
 	<a class="navbar-brand" href="#">JEE</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -28,6 +29,18 @@
 				        	<a class="nav-link d-block mr-6" href="logout">Logout</a>
 				        </c:if>		       
 			</li>
+			<li class="nav-item">
+		      <div class="dropdown">
+				  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Videos Visualizados
+				  </button>
+			 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				  	<c:forEach items="${videosVistos}" var="vv"> 
+				    	<a class="dropdown-item" href="backoffice/YTController?op=<%=YTController.OP_DETALLE%>&id=${vv.value.id}">(${vv.key}) ${vv.value.nombre}</a>
+				    </c:forEach>				    
+				  </div>
+				</div>
+	      </li>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search">
@@ -37,7 +50,7 @@
 </nav>
 
 <main class="container">
-  <div class="row">	
+ <%--  <div class="row">	
   <div class="col-12">
 	<% if ( request.getAttribute("mensaje") != null ){ %>
 	 	<div class="alert alert-${mensaje.tipo} alert-dismissible fade show" role="alert">
@@ -49,4 +62,4 @@
 
 		<%} %>
 	</div>	
-	  </div>
+	  </div> --%>

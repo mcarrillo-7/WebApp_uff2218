@@ -16,7 +16,10 @@ import javax.servlet.http.HttpSessionListener;
 public class UsuariosLogeadosListener implements HttpSessionListener, HttpSessionAttributeListener {
 
 	public static ArrayList<String> nombres = new ArrayList<String>();
-    /**
+  
+	
+	
+	/**
      * Default constructor. 
      */
     public UsuariosLogeadosListener() {
@@ -42,15 +45,23 @@ public class UsuariosLogeadosListener implements HttpSessionListener, HttpSessio
      * @see HttpSessionAttributeListener#attributeAdded(HttpSessionBindingEvent)
      */
     public void attributeAdded(HttpSessionBindingEvent event)  { 
+         System.out.println("atttributeAdded " + event.getName());
          
-    	nombres.add(event.getSession().toString()); //guarda la nueva sesion
+         if("usuario".equals(event.getName())) {
+        	 nombres.add((String) event.getValue());
+         }
+    	//nombres.add(event.getSession().toString()); //guarda la nueva sesion
     }
 
 	/**
      * @see HttpSessionAttributeListener#attributeRemoved(HttpSessionBindingEvent)
      */
     public void attributeRemoved(HttpSessionBindingEvent event)  { 
-         // TODO Auto-generated method stub
+         System.out.println("attributeRemoved " + event.getName() );
+     	
+     	if ( "usuario".equals(event.getName()) ) {
+     		nombres.remove( (String)event.getValue());
+     	}
     }
 
 	/**

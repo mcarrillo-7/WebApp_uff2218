@@ -36,6 +36,8 @@ public class YTController extends HttpServlet {
     public static final String OP_GUARDAR = "23";
 	public static final String OP_NUEVO = "4";
 	public static final String OP_ELIMINAR = "hfd3";
+	public static final String OP_ELI = "ihfd3";
+	
 	
     
 	private static VideoDAO videoDAO;

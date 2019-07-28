@@ -17,6 +17,9 @@
 			<li class="nav-item active"><a class="nav-link" href="backoffice/YTController">Videos
 					
 			</a></li>
+			<li class="nav-item active"><a class="nav-link" href="ejemplos/calculadora.jsp">Calculadora
+					
+			</a></li>
 			<li class="nav-item active"><a class="nav-link" href="ejemplos/pagina404.jsp">Prueba 404
 					
 			</a></li>

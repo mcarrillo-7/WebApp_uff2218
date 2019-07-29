@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class IdiomasController
  */
-@WebServlet("/IdiomasController")
+@WebServlet("/i18n")
 public class IdiomasController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +26,7 @@ public class IdiomasController extends HttpServlet {
 		String idiomaSeleccionado = request.getParameter("idiomaSeleccionado");
 		
 		String ruta = request.getParameter("ruta");
-		ruta = ruta.split("uf2218/")[1];
+		ruta = ruta.split("uf2218App/")[1];
 		
 		
 		String language = "en";

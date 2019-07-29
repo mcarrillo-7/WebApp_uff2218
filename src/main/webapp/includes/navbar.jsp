@@ -23,19 +23,17 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
-					
+			<li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio	
 			</a>
-			 <a class="nav-link" href="index.jsp"><fmt:message key="menu.inicio" /></a></li>
-			<li class="nav-item active"><a class="nav-link" href="backoffice/YTController">Videos
-					
+				<!-- <a class="nav-link" href="index.jsp"><fmt:message key="menu.inicio" /></a> --> 
+			</li>
+			<li class="nav-item-active"><a class="nav-link" href="nombres">Nombres</a></li>			
 			</a></li>
-			<li class="nav-item active"><a class="nav-link" href="ejemplos/calculadora.jsp">Calculadora
-					
+			<li class="nav-item active"><a class="nav-link" href="backoffice/YTController">Videos		
 			</a></li>
-			<li class="nav-item active"><a class="nav-link" href="ejemplos/pagina404.jsp">Prueba 404
-					
+			<li class="nav-item active"><a class="nav-link" href="ejemplos/calculadora.jsp">Calculadora		
 			</a></li>
+			
 			<li class="nav-item active mr-3 ml-3">
 				       	<c:if test="${usuario == null}">
 				        	<a class="nav-link" href="login.jsp">Login</a>
@@ -65,11 +63,11 @@
 	</div>
 </nav>
 
-<nav class="bg-dark">
+<%-- <nav class="bg-dark">
     	<a href="i18n?idiomaSeleccionado=fr_FR&ruta=${pageContext.request.requestURI}"><img src="img/francia.jpg" alt="" class="${sessionScope.idiomaSeleccionado != 'fr_FR' ? 'inactive': ''  }"></a>
     	<a href="i18n?idiomaSeleccionado=de_DE&ruta=${pageContext.request.requestURI}"><img src="img/germany.jpg" alt="" class="${sessionScope.idiomaSeleccionado != 'de_DE' ? 'inactive': ''  }"></a>
     	<a href="i18n?idiomaSeleccionado=en_EN&ruta=${pageContext.request.requestURI}"><img src="img/uk.jpg" alt="" class="${sessionScope.idiomaSeleccionado != 'en_EN' ? 'inactive': ''  }"></a> 
-    </nav>
+    </nav> --%>
 
 <main class="container">
  

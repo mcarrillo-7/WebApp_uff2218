@@ -15,7 +15,7 @@ import com.ipartek.formacion.model.pojo.Alert;
 /**
  * Servlet implementation class CalculatorController
  */
-@WebServlet("/ejemplos/calculator")
+@WebServlet("calcular")
 public class CalculadoraController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final  String[][] OPERACIONES = new String[][] {

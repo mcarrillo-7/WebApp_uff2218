@@ -1,4 +1,4 @@
-<%@page import="com.ipartek.formacion.controller.YTController"%>
+<%@page import="com.ipartek.formacion.controller.backoffice.YTController"%>
 
 <%@include file="../../includes/header.jsp"%>
 <%@include file="../../includes/navbar.jsp"%>

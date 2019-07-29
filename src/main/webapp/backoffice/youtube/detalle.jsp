@@ -1,4 +1,4 @@
-<%@page import="com.ipartek.formacion.controller.YTController"%>
+<%@page import="com.ipartek.formacion.controller.backoffice.YTController"%>
 <%@include file="../../../includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="../../../includes/navbar.jsp"%>

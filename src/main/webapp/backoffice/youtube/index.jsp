@@ -1,4 +1,4 @@
-<%@page import="com.ipartek.formacion.controller.YTController"%>
+<%@page import="com.ipartek.formacion.controller.backoffice.YTController"%>
 <%@page import="com.ipartek.formacion.model.pojo.Video"%>
 <%@page import="java.util.ArrayList"%>
 <%@include file="../../../includes/header.jsp"%>

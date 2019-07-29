@@ -1,5 +1,17 @@
 
-<%@page import="com.ipartek.formacion.controller.YTController"%>
+<%@page import="com.ipartek.formacion.controller.backoffice.YTController"%>
+<!-- FontAwesome -->
+<link rel="stylesheet" type="text/css"
+	href="vendors/fontawesome-free-5.9.0-web/css/all.min.css">
+	
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+	
+	<!-- custom CSS -->
+    <link rel="stylesheet" href="resources/css/styles.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
 	<a class="navbar-brand" href="#">JEE</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -13,7 +25,8 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
 					
-			</a></li>
+			</a>
+			 <a class="nav-link" href="index.jsp"><fmt:message key="menu.inicio" /></a></li>
 			<li class="nav-item active"><a class="nav-link" href="backoffice/YTController">Videos
 					
 			</a></li>
@@ -52,17 +65,11 @@
 	</div>
 </nav>
 
-<main class="container">
- <%--  <div class="row">	
-  <div class="col-12">
-	<% if ( request.getAttribute("mensaje") != null ){ %>
-	 	<div class="alert alert-${mensaje.tipo} alert-dismissible fade show" role="alert">
-		  <p>${mensaje.texto}</p>
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
+<nav class="bg-dark">
+    	<a href="i18n?idiomaSeleccionado=fr_FR&ruta=${pageContext.request.requestURI}"><img src="img/francia.jpg" alt="" class="${sessionScope.idiomaSeleccionado != 'fr_FR' ? 'inactive': ''  }"></a>
+    	<a href="i18n?idiomaSeleccionado=de_DE&ruta=${pageContext.request.requestURI}"><img src="img/germany.jpg" alt="" class="${sessionScope.idiomaSeleccionado != 'de_DE' ? 'inactive': ''  }"></a>
+    	<a href="i18n?idiomaSeleccionado=en_EN&ruta=${pageContext.request.requestURI}"><img src="img/uk.jpg" alt="" class="${sessionScope.idiomaSeleccionado != 'en_EN' ? 'inactive': ''  }"></a> 
+    </nav>
 
-		<%} %>
-	</div>	
-	  </div> --%>
+<main class="container">
+ 
